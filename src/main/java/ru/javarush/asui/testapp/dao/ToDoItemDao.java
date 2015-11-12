@@ -1,0 +1,14 @@
+package ru.javarush.asui.testapp.dao;
+
+
+import ru.javarush.asui.testapp.model.Status;
+import ru.javarush.asui.testapp.model.ToDoItem;
+
+import java.io.Serializable;
+import java.util.List;
+
+
+public interface ToDoItemDao extends GenericDao<ToDoItem, Integer> {
+
+    public List<ToDoItem> findByStatus(Status status);
+}
