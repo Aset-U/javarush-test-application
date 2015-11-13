@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <html>
-<t:head title="My orders"/>
+<t:head title="TO DO LIST"/>
 <body>
 <t:header/>
 <section id="cart_items">

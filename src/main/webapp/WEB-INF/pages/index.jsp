@@ -41,7 +41,7 @@
             <div class="product-image-wrapper">
                 <div class="single-products">
                     <div class="productinfo text-center">
-                        <a href=" <c:url value="/cart"></c:url>">
+                        <a href=" <c:url value="/users"></c:url>">
                             <h4><c:out value="User CRUD"/></h4>
                         </a>
                     </div>
@@ -52,7 +52,7 @@
             <div class="product-image-wrapper">
                 <div class="single-products">
                     <div class="productinfo text-center">
-                        <a href=" <c:url value="/orders">
+                        <a href=" <c:url value="/list">
                             </c:url>">
                             <h4><c:out value="TO DO List"/></h4>
                         </a>
