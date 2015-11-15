@@ -12,12 +12,13 @@ public class UserDaoImpl extends GenericDaoImpl<User, Integer> implements UserDa
 
 
     @Override
-    public User findByName(String name) {
-        User user = null;
+    public List<User>  findByName(String name) {
+        List<User>  users = null;
         Criteria criteria = currentSession().createCriteria(User.class, "user");
         criteria.add(Restrictions.eq("user.name", name));
-        user = (User) criteria.uniqueResult();
+        users = (List<User> )criteria.list();
 
-        return user;
+        return users;
     }
+
 }

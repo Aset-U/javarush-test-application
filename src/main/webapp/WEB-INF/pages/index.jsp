@@ -41,7 +41,7 @@
             <div class="product-image-wrapper">
                 <div class="single-products">
                     <div class="productinfo text-center">
-                        <a href=" <c:url value="/users"></c:url>">
+                        <a href=" <c:url value="/user-crud"></c:url>">
                             <h4><c:out value="User CRUD"/></h4>
                         </a>
                     </div>

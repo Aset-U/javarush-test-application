@@ -2,8 +2,10 @@ package ru.javarush.asui.testapp.dao;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
@@ -22,11 +24,7 @@ public abstract class GenericDaoImpl<E, K extends Serializable> implements Gener
 
     protected Class<? extends E> daoType;
 
-    /**
-     * By defining this class as abstract, we prevent Spring from creating instance of this class
-     * If not defined abstract getClass().getGenericSuperClass() would return Object.
-     * There would be exception because Object class does not hava constructor with parameters.
-     */
+
     public GenericDaoImpl() {
         Type t = getClass().getGenericSuperclass();
         ParameterizedType pt = (ParameterizedType) t;
@@ -65,5 +63,21 @@ public abstract class GenericDaoImpl<E, K extends Serializable> implements Gener
     @Override
     public List<E> getAll() {
         return currentSession().createCriteria(daoType).list();
+    }
+
+    @Override
+    public List<E> getPageList(Integer offset, Integer maxResults){
+        return sessionFactory.openSession()
+                .createCriteria(daoType)
+                .setFirstResult(offset!=null?offset:0)
+                .setMaxResults(maxResults!=null?maxResults:10)
+                .list();
+    }
+
+    public Long count(){
+        return (Long)sessionFactory.openSession()
+                .createCriteria(daoType)
+                .setProjection(Projections.rowCount())
+                .uniqueResult();
     }
 }

@@ -1,22 +1,36 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="tag" uri="/WEB-INF/taglibs/customTaglib.tld"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 
 <html>
 <t:head title="Users"/>
 <body>
 <t:header/>
+<nav class="navbar navbar-default">
 <section id="cart_items">
+
   <div class="container">
-    <div class="breadcrumbs">
-      <h3>User CRUD</h3>
-    </div>
+  <div class="breadcrumbs">
+    <h3>User CRUD</h3>
+    <br>
+  </div>
+
+  <form class="navbar-form navbar-static-top" role="search" action="/user-crud/search" method="post">
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Search by name" name="search">
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+
     <div class="table-responsive cart_info">
+
       <table class="table table-condensed">
         <thead>
         <tr class="cart_menu">
-          <td class="description">id</td>
+          <td class="description">User id</td>
           <td class="price">Name</td>
           <td class="quantity">Age</td>
           <td class="category">Is admin</td>
@@ -26,11 +40,9 @@
         </tr>
         </thead>
 
-        <c:forEach var="user" items="${users}" varStatus="iter">
+        <c:forEach var="user" items="${users}" varStatus="itr">
           <tr>
-            <td class="cart_description">
-              <p>${user.id}</p>
-            </td>
+            <td class="cart_description">${offset + itr.index +1 }</td>
             <td class="cart_price">
               <p>${user.name}</p>
             </td>
@@ -65,20 +77,28 @@
         </c:forEach>
 
       </table>
-
-
     </div>
   </div>
+
+
 </section> <!--/#cart_items-->
+<section>
 
-<section id="do_action">
   <div class="container">
-    <div class="col-sm-6">
-      <div class="total_area">
-        <a class="btn btn-default check_out" href="/addUser">Add new user</a>
-      </div>
+    <div class="col-sm-4">
+    <div class="total_area">
+      <a class="btn btn-default check_out" href="/addUser">Add new user</a>
     </div>
   </div>
-</section><!--/#do_action-->
+</div>
+  <br><br>
+</section>
+
+<div class="container">
+
+  <tag:paginate max="15" offset="${offset}" count="${count}"
+                uri="/user-crud" next="&raquo;" previous="&laquo;" />
+</div
+  </nav>
 </body>
 </html>

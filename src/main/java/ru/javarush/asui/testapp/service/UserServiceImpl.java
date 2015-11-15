@@ -9,6 +9,8 @@ import ru.javarush.asui.testapp.dao.GenericDao;
 import ru.javarush.asui.testapp.dao.UserDao;
 import ru.javarush.asui.testapp.model.User;
 
+import java.util.List;
+
 
 @Service
 public class UserServiceImpl extends GenericServiceImpl<User, Integer> implements UserService{
@@ -26,7 +28,7 @@ public class UserServiceImpl extends GenericServiceImpl<User, Integer> implement
 
     @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
     @Override
-    public User getByName(String name) {
+    public List<User> getByName(String name) {
         return userDao.findByName(name);
     }
 }

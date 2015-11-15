@@ -6,6 +6,7 @@ import java.util.List;
  * Generic Service
  */
 public interface GenericService<E, K> {
+
     public void saveOrUpdate(E entity);
 
     public List<E> getAll();
@@ -17,4 +18,8 @@ public interface GenericService<E, K> {
     public void update(E entity);
 
     public void remove(E entity);
+
+    public List<E> getPageList(Integer offset, Integer maxResults);
+
+    public Long count();
 }
