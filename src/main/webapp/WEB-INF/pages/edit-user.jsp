@@ -11,10 +11,10 @@
 <t:header/>
 <div class="container">
   <div class="row">
+    <table class="table table-condensed">
 
     <form:form method="post" action="/editUser" commandName="userEdit">
     <input type="hidden" name="OldUserId" value="${userEdit.id}">
-      <table class="cart_menu">
         <tr>
           <td>User name :</td>
           <td>${userEdit.name}</td>
@@ -50,10 +50,8 @@
             <input type="submit" value="Edit User"/>
           </td>
         </tr>
-      </table>
-
     </form:form>
-
+    </table>
   </div>
 </div>
 </body>

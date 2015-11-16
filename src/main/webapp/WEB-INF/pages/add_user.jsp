@@ -4,17 +4,15 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
 <html>
 <t:head title="Add new user"/>
 <body>
 <t:header/>
 <div class="container">
   <div class="row">
-
+    <table class="table table-condensed">
       <form:form method="post" action="addUser" commandName="user">
 
-        <table class="cart_menu">
           <tr>
             <td>Name :</td>
             <td><form:input path="name" /></td>
@@ -38,10 +36,10 @@
               <input type="submit" value="Add User"/>
             </td>
           </tr>
-        </table>
+
 
       </form:form>
-
+</table>
   </div>
 </div>
 </body>

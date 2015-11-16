@@ -27,11 +27,11 @@
                     </div>
                     <div class="mainmenu pull-left">
                         <ul class="nav navbar-nav collapse navbar-collapse">
-                            <li><a href="/controller?page=home" class="active">Home</a></li>
+                            <li><a href="/" class="active">Home</a></li>
                             <li class="dropdown"><a href="#">Web applications<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
-                                    <li><a href="/controller?page=all-products">User CRUD</a></li>
-                                    <li><a href="/controller?page=all-products">TO DO List</a></li>
+                                    <li><a href="/user-crud">User CRUD</a></li>
+                                    <li><a href="/list">TO DO List</a></li>
                                 </ul>
                             </li>
                         </ul>

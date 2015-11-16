@@ -32,4 +32,14 @@ public class ToDoItemServiceImpl extends GenericServiceImpl<ToDoItem,Integer> im
     public List<ToDoItem> findByStatus(Status status) {
         return toDoItemDao.findByStatus(status);
     }
+
+    @Override
+    public List<ToDoItem> getPageList(Integer offset, Integer maxResults) {
+        return toDoItemDao.getPageList(offset, maxResults);
+    }
+
+    @Override
+    public Long count() {
+        return toDoItemDao.count();
+    }
 }

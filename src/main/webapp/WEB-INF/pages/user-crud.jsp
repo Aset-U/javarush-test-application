@@ -6,7 +6,7 @@
 
 
 <html>
-<t:head title="Users"/>
+<t:head title="User CRUD"/>
 <body>
 <t:header/>
 <nav class="navbar navbar-default">
@@ -14,7 +14,7 @@
 
   <div class="container">
   <div class="breadcrumbs">
-    <h3>User CRUD</h3>
+    <h3>Users</h3>
     <br>
   </div>
 
@@ -31,7 +31,7 @@
       <table class="table table-condensed">
         <thead>
         <tr class="cart_menu">
-          <td class="description">User id</td>
+          <td class="description">№</td>
           <td class="price">Name</td>
           <td class="quantity">Age</td>
           <td class="category">Is admin</td>

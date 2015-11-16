@@ -63,7 +63,6 @@ public class UserController {
     @RequestMapping(value = "/editUser", method = RequestMethod.POST)
     public String editUser(@ModelAttribute("userEdit") User userEdit,
                            BindingResult result, HttpServletRequest request) {
-
         Integer userId =  Integer.parseInt(request.getParameter("OldUserId"));
         User user = userService.get(userId);
         user.setName(userEdit.getName());
@@ -71,7 +70,6 @@ public class UserController {
         user.setIsAdmin(user.isAdmin());
 
         userService.update(user);
-
         return "redirect:/user-crud";
     }
 

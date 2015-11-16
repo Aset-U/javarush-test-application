@@ -29,7 +29,7 @@ public class UserDaoImpl extends GenericDaoImpl<User, Integer> implements UserDa
     @Transactional
     public List<User> getPageList(Integer offset, Integer maxResults){
         return currentSession()
-                .createCriteria(daoType)
+                .createCriteria(User.class)
                 .setFirstResult(offset!=null?offset:0)
                 .setMaxResults(maxResults!=null?maxResults:10)
                 .list();
@@ -37,7 +37,7 @@ public class UserDaoImpl extends GenericDaoImpl<User, Integer> implements UserDa
 
     public Long count(){
         return (Long)currentSession()
-                .createCriteria(daoType)
+                .createCriteria(User.class)
                 .setProjection(Projections.rowCount())
                 .uniqueResult();
     }
