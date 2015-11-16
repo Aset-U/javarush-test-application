@@ -1,8 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="tag" uri="/WEB-INF/taglibs/customTaglib.tld"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
+
 
 <html>
 <t:head title="Users"/>
@@ -53,7 +54,10 @@
               <p>${user.admin}</p>
             </td>
             <td class="cart_total">
-              <p>${user.createdDate}</p>
+              <fmt:parseDate value="${user.createdDate}" var="dateObject"
+                             pattern="yyyy-MM-dd HH:mm" />
+              <p><fmt:formatDate value="${dateObject}" pattern="dd.MM.yyyy" /></p>
+              <p><fmt:formatDate value="${dateObject }" pattern="HH:mm" /></p>
             </td>
             <td class="cart_delete">
               <form action="/delete" method="POST">
@@ -63,10 +67,9 @@
                        value="Delete">
               </form>
             </td>
-            <td class="cart_delete">
-              <form action="/controller" method="POST">
-                <input type="hidden" name="command" value="deleteProductCart">
-                <input type="hidden" name="productDeleted" value="${product.id}">
+            <td class="form-group">
+              <form action="/user-crud/edit" method="POST">
+                <input type="hidden" name="userEdit" value="${user.id}">
                 <input type="submit"
                        name="submit"
                        value="Edit">
@@ -100,7 +103,6 @@
                 uri="/user-crud" next="&raquo;" previous="&laquo;" />
 </div
   </nav>
-<script type="text/javascript" src="/js/jquery.js"></script>
-<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
 </body>
 </html>

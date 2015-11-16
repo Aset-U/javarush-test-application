@@ -19,11 +19,6 @@ public abstract class GenericServiceImpl<E, K> implements GenericService<E, K> {
     public GenericServiceImpl() {
     }
 
-    @Override
-    @Transactional(propagation = Propagation.REQUIRED)
-    public void saveOrUpdate(E entity) {
-        genericDao.saveOrUpdate(entity);
-    }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
@@ -40,7 +35,7 @@ public abstract class GenericServiceImpl<E, K> implements GenericService<E, K> {
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public void add(E entity) {
-        genericDao.add(entity);
+        genericDao.persist(entity);
     }
 
     @Override
@@ -51,7 +46,7 @@ public abstract class GenericServiceImpl<E, K> implements GenericService<E, K> {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
-    public void remove(E entity) {
+    public void delete(E entity) {
         genericDao.remove(entity);
     }
 

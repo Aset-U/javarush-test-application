@@ -15,7 +15,7 @@
       <div class="breadcrumbs">
         <h3>User CRUD</h3>
         <br>
-        ${notResult}
+        <p style="color:#ff0000">${notResult}</p>
       </div>
 
       <form class="navbar-form navbar-static-top" role="search" action="/user-crud/search" method="post">
@@ -82,7 +82,7 @@
     </div>
 
 
-  </section> <!--/#cart_items-->
+  </section>
   <section>
 
   <div class="container">
