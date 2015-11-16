@@ -19,7 +19,4 @@ public interface GenericService<E, K> {
 
     public void remove(E entity);
 
-    public List<E> getPageList(Integer offset, Integer maxResults);
-
-    public Long count();
 }

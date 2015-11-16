@@ -25,10 +25,19 @@ public class UserServiceImpl extends GenericServiceImpl<User, Integer> implement
         this.userDao = (UserDao)genericDao;
     }
 
-
-    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
     @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
     public List<User> getByName(String name) {
         return userDao.findByName(name);
+    }
+
+    @Override
+    public List<User> getPageList(Integer offset, Integer maxResults) {
+        return userDao.getPageList(offset, maxResults);
+    }
+
+    @Override
+    public Long count() {
+        return userDao.count();
     }
 }

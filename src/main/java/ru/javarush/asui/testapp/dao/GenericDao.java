@@ -13,6 +13,4 @@ public interface GenericDao<E,K> {
     public void remove(E entity);
     public E find(K key);
     public List<E> getAll() ;
-    public List<E> getPageList(Integer offset, Integer maxResults);
-    public Long count();
 }

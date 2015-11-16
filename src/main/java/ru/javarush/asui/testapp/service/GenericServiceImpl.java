@@ -55,14 +55,5 @@ public abstract class GenericServiceImpl<E, K> implements GenericService<E, K> {
         genericDao.remove(entity);
     }
 
-    @Override
-    @SuppressWarnings("unchecked")
-    @Transactional
-    public List<E> getPageList(Integer offset, Integer maxResults){
-        return genericDao.getPageList(offset, maxResults);
-    }
-    @Transactional
-    public Long count(){
-        return genericDao.count();
-    }
+
 }

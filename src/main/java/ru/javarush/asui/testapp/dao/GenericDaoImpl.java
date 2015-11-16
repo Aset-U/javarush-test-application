@@ -16,6 +16,7 @@ import java.util.List;
  * Basic DAO operations dependent with Hibernate's specific classes
  * @see SessionFactory
  */
+
 @SuppressWarnings("unchecked")
 @Repository
 public abstract class GenericDaoImpl<E, K extends Serializable> implements GenericDao<E, K> {
@@ -65,19 +66,5 @@ public abstract class GenericDaoImpl<E, K extends Serializable> implements Gener
         return currentSession().createCriteria(daoType).list();
     }
 
-    @Override
-    public List<E> getPageList(Integer offset, Integer maxResults){
-        return sessionFactory.openSession()
-                .createCriteria(daoType)
-                .setFirstResult(offset!=null?offset:0)
-                .setMaxResults(maxResults!=null?maxResults:10)
-                .list();
-    }
 
-    public Long count(){
-        return (Long)sessionFactory.openSession()
-                .createCriteria(daoType)
-                .setProjection(Projections.rowCount())
-                .uniqueResult();
-    }
 }
