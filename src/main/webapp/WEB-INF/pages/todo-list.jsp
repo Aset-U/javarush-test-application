@@ -46,38 +46,42 @@
             <td class="quantity">Time</td>
             <td class="category">Location</td>
             <td class="total">Description</td>
+            <td class="total">Category</td>
             <td class="total">Status</td>
             <td></td>
             <td></td>
           </tr>
           </thead>
 
-          <c:forEach var="item" items="${todoList}" varStatus="itr">
+          <c:forEach var="todoItem" items="${todoList}" varStatus="itr">
             <tr>
               <td class="cart_description">${offset + itr.index +1 }</td>
               <td class="cart_price">
-                <p>${item.title}</p>
+                <p>${todoItem.title}</p>
               </td>
               <td class="cart_quantity">
-                <fmt:parseDate value="${item.time}" var="dateObject"
+                <fmt:parseDate value="${todoItem.time}" var="dateObject"
                                                         pattern="yyyy-MM-dd HH:mm" />
                 <p><fmt:formatDate value="${dateObject}" pattern="dd.MM.yyyy" /></p>
                 <p><fmt:formatDate value="${dateObject }" pattern="HH:mm" /></p>
               </td>
               <td class="cart_category">
-                <p>${item.location}</p>
+                <p>${todoItem.location}</p>
               </td>
               <td class="cart_total">
-                <p>${item.description}</p>
+                <p>${todoItem.description}</p>
               </td>
               <td class="cart_total">
-                <p>${item.status}</p>
+                <p>${todoItem.category.name}</p>
+              </td>
+              <td class="cart_total">
+                <p>${todoItem.status}</p>
               </td>
               <td>
-                <a class="btn btn-default check_out" href="/list/delete?itemId=${item.id}"> delete </a>
+                <a class="btn btn-default check_out" href="/list/delete?itemId=${todoItem.id}"> delete </a>
               </td>
               <td>
-                <a class="btn btn-default check_out" href="/list/edit?itemId=${item.id}"> edit </a>
+                <a class="btn btn-default check_out" href="/list/edit?itemId=${todoItem.id}"> edit </a>
               </td>
             </tr>
           </c:forEach>
@@ -93,7 +97,7 @@
   <div class="container">
     <div class="col-sm-4">
       <div class="total_area">
-        <a class="btn btn-default check_out" href="/list/addItem">Add new todo item</a>
+        <a class="btn btn-default check_out" href="/addItem">Add new todo item</a>
       </div>
     </div>
   </div>

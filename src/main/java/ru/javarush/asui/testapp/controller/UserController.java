@@ -3,21 +3,16 @@ package ru.javarush.asui.testapp.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 import ru.javarush.asui.testapp.model.User;
 import ru.javarush.asui.testapp.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -39,7 +34,7 @@ public class UserController {
     @RequestMapping(value = {"/addUser"}, method = RequestMethod.GET)
     public String addUserForm(Model model) {
          model.addAttribute("user", new User());
-        return "/add_user";
+        return "/add-user";
     }
 
     @RequestMapping(value = "/addUser", method = RequestMethod.POST)

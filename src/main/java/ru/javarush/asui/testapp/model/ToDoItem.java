@@ -1,5 +1,7 @@
 package ru.javarush.asui.testapp.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -19,7 +21,7 @@ public class ToDoItem implements Serializable {
     private String  description;
 
     private String  location;
-
+    @DateTimeFormat(pattern = "dd.MM.yyyy HH:mm")
     private Date time;
 
     @Column(columnDefinition = "enum('PERFORMED','NOT_DONE')")
