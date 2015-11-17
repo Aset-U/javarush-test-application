@@ -13,17 +13,17 @@
   <div class="container">
     <div class="col-sm-4">
       <div class="total_area">
-        <a class="btn btn-default check_out" href="/list/performed">PERFORMED</a>
+        <a class="btn btn-default check_out" href="/list/performedList">PERFORMED</a>
       </div>
     </div>
     <div class="col-sm-4">
       <div class="total_area">
-        <a class="btn btn-default check_out" href="/list/notDone">NOT DONE</a>
+        <a class="btn btn-default check_out" href="/list/notDoneList">NOT DONE</a>
       </div>
     </div>
     <div class="col-sm-4">
       <div class="total_area">
-        <a class="btn btn-default check_out" href="/list/all"> ALL </a>
+        <a class="btn btn-default check_out" href="/list"> ALL </a>
       </div>
     </div>
   </div>
@@ -46,6 +46,7 @@
             <td class="quantity">Time</td>
             <td class="category">Location</td>
             <td class="total">Description</td>
+            <td class="total">Status</td>
             <td></td>
             <td></td>
           </tr>
@@ -69,11 +70,14 @@
               <td class="cart_total">
                 <p>${item.description}</p>
               </td>
-              <td>
-                <a class="btn btn-default check_out" href="/list/delete"> delete </a>
+              <td class="cart_total">
+                <p>${item.status}</p>
               </td>
               <td>
-                <a class="btn btn-default check_out" href="/list/edit"> edit </a>
+                <a class="btn btn-default check_out" href="/list/delete?itemId=${item.id}"> delete </a>
+              </td>
+              <td>
+                <a class="btn btn-default check_out" href="/list/edit?itemId=${item.id}"> edit </a>
               </td>
             </tr>
           </c:forEach>
@@ -99,7 +103,7 @@
   <div class="container">
 
     <tag:paginate max="15" offset="${offset}" count="${count}"
-                  uri="/user-crud" next="&raquo;" previous="&laquo;" />
+                  uri="/list" next="&raquo;" previous="&laquo;" />
   </div>
 
 

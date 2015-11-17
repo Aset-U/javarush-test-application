@@ -27,10 +27,9 @@ public class ToDoItemServiceImpl extends GenericServiceImpl<ToDoItem,Integer> im
         this.toDoItemDao = (ToDoItemDao) genericDao;
     }
 
-    @Override
-    @Transactional(propagation = Propagation.REQUIRED)
-    public List<ToDoItem> findByStatus(Status status) {
-        return toDoItemDao.findByStatus(status);
+
+    public List<ToDoItem> findByStatus(Status status, Integer offset, Integer maxResults) {
+        return toDoItemDao.findByStatus(status, offset, maxResults);
     }
 
     @Override

@@ -16,11 +16,18 @@ import java.util.List;
 @Transactional
 public class ToDoItemDaoImpl extends GenericDaoImpl<ToDoItem, Integer> implements ToDoItemDao {
 
-    public List<ToDoItem> findByStatus(Status status) {
+    @Override
+    @SuppressWarnings("unchecked")
+    @Transactional
+    public List<ToDoItem> findByStatus(Status status, Integer offset, Integer maxResults) {
         List<ToDoItem> toDoItemList = null;
         Criteria criteria = currentSession().createCriteria(ToDoItem.class, "toDoItem");
         criteria.add(Restrictions.eq("toDoItem.status", status));
-        toDoItemList = criteria.list();
+        toDoItemList = criteria
+                 .setFirstResult(offset!=null?offset:0)
+                 .setMaxResults(maxResults!=null?maxResults:10)
+                 .list();
+
         return toDoItemList;
     }
 
@@ -34,6 +41,7 @@ public class ToDoItemDaoImpl extends GenericDaoImpl<ToDoItem, Integer> implement
                 .setMaxResults(maxResults!=null?maxResults:10)
                 .list();
     }
+
 
     @Override
     public Long count() {

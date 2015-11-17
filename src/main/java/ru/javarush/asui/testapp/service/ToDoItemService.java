@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface ToDoItemService extends GenericService<ToDoItem, Integer> {
 
-    public List<ToDoItem> findByStatus(Status status);
+    public List<ToDoItem> findByStatus(Status status, Integer offset, Integer maxResults);
     public List<ToDoItem> getPageList(Integer offset, Integer maxResults);
     public Long count();
 
