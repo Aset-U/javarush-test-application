@@ -8,6 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import ru.javarush.asui.testapp.model.Category;
 import ru.javarush.asui.testapp.model.Status;
 import ru.javarush.asui.testapp.model.ToDoItem;
@@ -65,6 +66,33 @@ public class ToDoListController {
         todoItem.setCategory(category);
         toDoItemService.add(todoItem);
 
+        return "redirect:/list";
+    }
+
+    @RequestMapping(value = {"/list/edit"}, method = RequestMethod.GET)
+    public String editItemForm(@RequestParam(value="itemId", required=true) Integer id, Model model) {
+        ToDoItem toDoItem = toDoItemService.get(id);
+        model.addAttribute("itemEdit", toDoItem);
+        model.addAttribute("categories", categoryService.getAll());
+        return "/edit-todo-item";
+    }
+
+    @RequestMapping(value = "/editItem", method = RequestMethod.POST)
+    public String editItem(@ModelAttribute("itemEdit") ToDoItem toDoItem,
+                           BindingResult result, HttpServletRequest request) {
+
+        toDoItem.setId(Integer.parseInt(request.getParameter("OldItemId")));
+        toDoItem.setCategory(categoryService.get(Integer.parseInt(request.getParameter("category"))));
+        toDoItemService.update(toDoItem);
+        return "redirect:/list";
+    }
+
+    @RequestMapping(value = "/list/delete", method = RequestMethod.GET)
+    public String delete(@RequestParam(value="itemId", required=true) Integer id,
+                         Model model) {
+
+       ToDoItem userDeleted = toDoItemService.get(id);
+       toDoItemService.delete(userDeleted);
         return "redirect:/list";
     }
 }

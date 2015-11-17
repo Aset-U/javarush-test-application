@@ -6,7 +6,7 @@
 
 
 <html>
-<t:head title="Add new user"/>
+<t:head title="Edit user"/>
 <body>
 <t:header/>
 <div class="container">
