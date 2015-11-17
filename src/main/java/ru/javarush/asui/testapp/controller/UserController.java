@@ -62,7 +62,7 @@ public class UserController {
         User user = userService.get(userId);
         user.setName(userEdit.getName());
         user.setAge(userEdit.getAge());
-        user.setIsAdmin(user.isAdmin());
+        user.setIsAdmin(userEdit.isAdmin());
 
         userService.update(user);
         return "redirect:/user-crud";
